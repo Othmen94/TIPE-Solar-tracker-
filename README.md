@@ -52,7 +52,8 @@ void loop() {
 currentAngle += 1; // Déplace légèrement à gauche
  } else if (difference < 0): { // Plus de lumière à droite
 currentAngle -= 1; //Déplace légèrement à droite
- de
+ delay(50); // Pause pour stabiliser les mouvements
+ }
 </code></pre>
 
 <hr>
