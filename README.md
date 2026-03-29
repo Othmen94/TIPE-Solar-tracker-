@@ -29,20 +29,30 @@
 
 <hr>
 
-<h2>💻 Fonctionnement du Système</h2>
+<h2>💻 Code du Système avec Arduino</h2>
 <p>
   Le programme compare en permanence l'intensité lumineuse reçue par les deux capteurs LDR. Si un déséquilibre est détecté (le soleil a bougé), l'Arduino commande au servomoteur d'ajuster l'angle du panneau pour revenir face à la source de lumière maximale.
 </p>
 
 <pre><code>
-// Logique simplifiée du code
-int difference = valeurGauche - valeurDroite;
-
-if (difference > seuil) {
-    monServo.write(angle++); // Tourne vers la lumière
-} else if (difference < -seuil) {
-    monServo.write(angle--); // Tourne vers la lumière
-}
+#include <Servo.h>
+Servo servo; // Crée un objet pour contrôler le servo
+ const int ldrLeft = A0; // LDR gauche
+ const int ldrRight = A1; // LDR droite
+void setup() {
+ servo.attach(9); // Connecte le servo au pin numérique 9
+ Serial.begin(9600); // Démarre la communication série
+ }
+void loop() {
+ int valueLeft = analogRead(ldrLeft); // Lit la valeur de la LDR gauche
+ int valueRight = analogRead(ldrRight); // Lit la valeur de la LDR droite
+ int difference = valueLeft - valueRight;
+// Ajustement du servo en micro-degrés pour suivre le soleil
+ if (difference > 0): { // Plus de lumière à gauche
+currentAngle += 1; // Déplace légèrement à gauche
+ } else if (difference < 0): { // Plus de lumière à droite
+currentAngle -= 1; //Déplace légèrement à droite
+ de
 </code></pre>
 
 <hr>
